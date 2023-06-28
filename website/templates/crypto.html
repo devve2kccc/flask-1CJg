@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block stylesheets %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/crypto.css') }}"
+/>
+{% endblock %} {% block title %}Crypto{% endblock %} {% block content %}
+<div class="container-showroom">
+  <div
+    id="coinmarketcap-widget-marquee"
+    class="showroom"
+    coins="1,1027,825,6636,1975,1839,52,3890,5426"
+    currency="USD"
+    theme="dark"
+    transparent="false"
+    show-symbol-logo="true"
+  ></div>
+</div>
+<script
+  type="text/javascript"
+  src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"
+></script>
+{% endblock %}

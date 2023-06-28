@@ -1,0 +1,44 @@
+.containerbank {
+  margin: 80px auto;
+  width: 100%;
+}
+
+section {
+  padding: 30px 0;
+}
+
+form button {
+  margin: 15px 0;
+  width: 20%;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+table {
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border-color: #282b30;
+}
+
+table thead th {
+  background-color: #282b30;
+  color: #000000;
+}
+
+table tbody td {
+  background-color: #ffffff;
+  color: #282b30;
+}
+
+table tbody tr:nth-child(even) td {
+  background-color: #ffffff;
+}
+
+table tbody tr:hover td {
+  background-color: #ffffff;
+}

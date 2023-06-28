@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block stylesheets %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/profile.css') }}"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+  rel="stylesheet"
+/>
+{% endblock %} {% block title %} My Profile {% endblock %} {% block content %}
+<section class="profile-container">
+  <div class="profile-details">
+    <h1>Name: {{ user.first_name }}</h1>
+    <h2>Email: {{ user.email }}</h2>
+  </div>
+</section>
+
+<main class="report-table">
+  <h2>Generated Reports</h2>
+  <div class="table-responsive">
+  <table class="table table-light align-middle">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in generated_reports %}
+      <tr>
+        <td>{{ report.filename.split('/')[-1] }}</td>
+        <td>{{ report.generated_at }}</td>
+        <td>
+          <a
+            href="{{ url_for('views.download_report', report_id=report.id) }}"
+            class="download-link"
+            ><i class="fa-solid fa-download fa-beat-fade fa-lg"></i></a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</main>
+
+<aside class="generate-form">
+  <form action="/generate_pdf" method="POST">
+    <div class="form-group">
+      <label for="start_date">Start Date:</label>
+      <input type="date" id="start_date" name="start_date" min="{{ min_date }}" max="{{ max_date }}" required />
+    </div>
+    <div class="form-group">
+      <label for="end_date">End Date:</label>
+      <input
+        type="date"
+        id="end_date"
+        name="end_date"
+        min="{{ min_date }}" 
+        max="{{ max_date }}" 
+        required
+      />
+    </div>
+    <button type="submit" class="generate-pdf-btn btn btn-info">Generate PDF</button>
+  </form>
+</aside>
+{% endblock %}

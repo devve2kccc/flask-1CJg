@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block stylesheets %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/savings.css') }}" />
+{% endblock %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="text-center">Yours Savings</h2>
+  <section class="add-safe-container">
+    <div class="form-safe">
+      <form action="/addsafe" method="POST" class="text-center">
+        <div class="form-group">
+          <label for="safeName">Safe Name</label>
+          <input type="text" class="form-control" name="safeName" id="safeName" placeholder="Enter Safe Name" />
+        </div>
+        <div class="form-group">
+          <label for="safeBalance">Balance</label>
+          <input type="text" class="form-control" name="safeBalance" id="safeBalance" placeholder="Enter Balance" />
+        </div>
+        <button type="submit" class="btn btn-success mt-2">
+          <i class="fa-solid fa-plus fa-beat" style="color: #ffffff"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+  <table class="table bg-white table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Safe Name</th>
+        <th scope="col">Safe Balance</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for safe in user.savings %}
+      <tr>
+        <td>{{ safe.safename }}</td>
+        <td>{{ safe.balance }}</td>
+        <td>
+          <button class="btn btn-info" id="updatesafe">
+            Edit
+          </button>
+          <button class="btn btn-danger" onclick="deleteSafe({{ safe.id }})">
+            Delete
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

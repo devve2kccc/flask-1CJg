@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block stylesheets %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/bank.css') }}"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+  rel="stylesheet"
+/>
+{% endblock %} {% block title %} Banks {% endblock %} {% block content %}
+<div class="containerbank">
+  <h2 class="text-center">Yours Balances</h2>
+  <section class="row">
+    <div class="col-sm-6">
+      <form action="/banks" method="POST" class="text-center">
+        <div class="form-group">
+          <label for="bankName">Bank Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bankName"
+            id="bankName"
+            placeholder="Enter Bank Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="bankBalance">Balance</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bankBalance"
+            id="bankBalance"
+            placeholder="Enter Balance"
+          />
+        </div>
+        <button type="submit" class="btn btn-success mt-2">
+          <i class="fa-solid fa-plus fa-beat" style="color: #ffffff"></i>
+        </button>
+      </form>
+    </div>
+    <div class="col-sm-6">
+      <form action="/cash" method="POST" class="text-center">
+        <div class="form-group">
+          <label for="cashSource">Cash Source</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cashSource"
+            id="cashSource"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cashBalance">Balance</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cashBalance"
+            id="cashBalance"
+          />
+        </div>
+        <button type="submit" class="btn btn-success mt-2">
+          <i class="fa-solid fa-plus fa-beat" style="color: #ffffff"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+  <table class="table table-striped table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Bank Name</th>
+        <th scope="col">Bank Balance</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bank in user.banks %}
+      <tr>
+        <td>{{ bank.bankname }}</td>
+        <td>{{ bank.ammout }}</td>
+        <td>
+          <button class="btn btn-danger" onclick="deleteBank({{ bank.id }})">
+            Delete
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

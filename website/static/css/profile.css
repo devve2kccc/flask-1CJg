@@ -1,0 +1,101 @@
+
+
+.profile-container {
+  text-align: center;
+  margin: 100px auto;
+}
+
+.profile-details {
+  background-color: #1e2124;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details h1 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.profile-details h2 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.report-table {
+  background-color: #1e2124;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.report-table h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+.report-table table {
+  width: 100%;
+
+}
+
+.report-table th {
+  background-color: #ffffff;
+  border-top: 0;
+  border-bottom: 2px solid #ffffff;
+  font-weight: 500;
+}
+
+.report-table td {
+  border-top: 1px solid #dee2e6;
+}
+
+
+/* Bootstrap classes */
+.table-responsive {
+  overflow-x: auto;
+}
+.align-middle {
+  vertical-align: middle !important;
+}
+.table-light {
+  background-color: #2e4f71;
+}
+
+.generate-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.generate-form form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.generate-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
+
+.generate-form label {
+  margin-bottom: 5px;
+}
+
+.generate-form input[type="date"],
+.generate-form .generate-pdf-btn {
+  height: 34px;
+  width: 200px;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.generate-pdf-btn {
+  margin: 25px auto;
+}
